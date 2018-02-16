@@ -1,0 +1,16 @@
+@using System.Security.Principal
+@using ICZEU.Invoice.WebApp.Extensions
+
+@if (User.Identity.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="navbar-text">Hallo @User.GetName()!</li>
+        <li><a asp-area="" asp-controller="Account" asp-action="SignOut">Abmelden</a></li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Account" asp-action="Signin">Anmelden</a></li>
+    </ul>
+}

@@ -1,0 +1,25 @@
+﻿@model ICZEU.Invoice.WebApp.Models.InvoiceFormModel
+@{
+    ViewData["Title"] = "Rechnungsupload";
+}
+
+<h1 class="h2">Rechnungsupload</h1>
+
+<form asp-action="Index" method="post" enctype="multipart/form-data" style="margin-top: 30px">
+    <div class="form-group">
+        <label asp-for="CostCenter"></label>
+        <select asp-for="CostCenter" asp-items="Model.CostCenterItems" class="form-control"></select>
+        <span asp-validation-for="CostCenter" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Reason"></label>
+        <input asp-for="Reason" class="form-control" />
+        <span asp-validation-for="Reason" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Attachments"></label>
+        <input asp-for="Attachments" class="form-control" />
+        <span asp-validation-for="Attachments" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Absenden</button>
+</form>

@@ -6,9 +6,14 @@ namespace ICZEU.Invoice.WebApp
 {
     public class Program
     {
+        public static IConfiguration Configuration;
+
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            IWebHost webHost = BuildWebHost(args);
+            // Make configuration available as a static field for the TokenHelper class.
+            Configuration = (IConfiguration) webHost.Services.GetService(typeof(IConfiguration));
+            webHost.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

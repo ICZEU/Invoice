@@ -17,5 +17,6 @@
     .navbar-inverse .navbar-text,
     .navbar-inverse .navbar-brand,
     .navbar-inverse .navbar-nav > li > a {
-        color: #CCCCCC;
+        color: #eee;
+        white-space: nowrap;
     }

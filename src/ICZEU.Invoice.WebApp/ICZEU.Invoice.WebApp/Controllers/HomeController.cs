@@ -42,11 +42,16 @@ namespace ICZEU.Invoice.WebApp.Controllers
 
         private InvoiceFormModel PopulateViewModel(InvoiceFormModel model)
         {
-            var options = GetCostCenterOptions();
-            options.Sort();
-            options.Insert(0, "");
-            model.CostCenterItems = options.Select(
-                opt => new SelectListItem { Text = opt, Value = opt }).ToList();
+            IList<SelectListItem> options = GetCostCenterOptions()
+                .Select(opt => new SelectListItem { Text = opt, Value = opt })
+                .OrderBy(x => x.Text)
+                .ToList();
+            options.Insert(0, new SelectListItem
+            {
+                Value = "Neuer Arbeitsbereich",
+                Text = "Neuer Arbeitsbereich. Bitte im Verwendungszweck den Arbeitsbereich mit angeben!"
+            });
+            model.CostCenterItems = options;
             return model;
         }
 

@@ -17,15 +17,18 @@
         <span asp-validation-for="Reason" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Attachments"></label>
-        <input asp-for="Attachments" class="form-control" />
-        <span asp-validation-for="Attachments" class="text-danger"></span>
-    </div>
-    <div class="form-group">
         <label asp-for="EmailAddress"></label>
         <div class="help-block">Hier kannst du eine zusätzliche E-Mail-Adresse angeben, an die eine Kopie der Antwort gesendet werden soll.</div>
         <input asp-for="EmailAddress" class="form-control" type="email" />
         <span asp-validation-for="EmailAddress" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="Attachments"></label>
+        <input asp-for="Attachments" class="form-control" />
+        <span asp-validation-for="Attachments" class="text-danger"></span>
+    </div>
+    <p>
+        Du erhältst eine Bestätigung per E-Mail, sobald deine Rechnung eingegangen ist.
+    </p>
     <button type="submit" class="btn btn-primary">Absenden</button>
 </form>

@@ -7,13 +7,6 @@ namespace ICZEU.Invoice.WebApp.Models
 {
     public class InvoiceFormModel
     {
-        public InvoiceFormModel()
-        {
-            CostCenterItems.Add(new SelectListItem { Text = "KidsClub", Value = "KidsClub" });
-            CostCenterItems.Add(new SelectListItem { Text = "Renovierung Thränstr. 23/2", Value = "Renovierung Thränstr. 23/2" });
-            CostCenterItems.Add(new SelectListItem { Text = "Sonstiger", Value = "" });
-        }
-
         public IList<SelectListItem> CostCenterItems { get; set; } = new List<SelectListItem>();
 
         [Required(ErrorMessage = "Bitte Auswahl treffen!")]
@@ -23,6 +16,10 @@ namespace ICZEU.Invoice.WebApp.Models
         [Required(ErrorMessage = "Bitte Verwendungszweck angeben!")]
         [Display(Name = "Verwendungszweck")]
         public string Reason { get; set; }
+
+        [Display(Name = "Antwort senden an (optional)")]
+        [EmailAddress(ErrorMessage = "Bitte gültige E-Mail-Adresse eingeben!")]
+        public string EmailAddress { get; set; }
 
         [Required(ErrorMessage = "Bitte lade mindestens eine Datei hoch!")]
         [Display(Name = "Rechnung als PDF oder Bild")]

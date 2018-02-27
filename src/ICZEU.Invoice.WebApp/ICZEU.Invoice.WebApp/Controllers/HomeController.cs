@@ -84,6 +84,7 @@ namespace ICZEU.Invoice.WebApp.Controllers
                 item["Title"] = model.Reason;
                 item["Kostenstelle"] = model.CostCenter;
                 item["Absender"] = new FieldUserValue { LookupId = author.Id };
+                item["CC"] = model.EmailAddress;
                 item.Update();
                 context.ExecuteQuery();
 

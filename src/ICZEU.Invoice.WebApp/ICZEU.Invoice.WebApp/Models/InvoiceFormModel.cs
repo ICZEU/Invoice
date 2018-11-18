@@ -7,6 +7,9 @@ namespace ICZEU.Invoice.WebApp.Models
 {
     public class InvoiceFormModel
     {
+        public const string StatusNotPaid = "notpaid";
+        public const string StatusPaid = "paid";
+
         public IList<SelectListItem> CostCenterItems { get; set; } = new List<SelectListItem>();
 
         [Required(ErrorMessage = "Bitte Auswahl treffen!")]
@@ -17,7 +20,19 @@ namespace ICZEU.Invoice.WebApp.Models
         [Display(Name = "Verwendungszweck")]
         public string Reason { get; set; }
 
-        [Display(Name = "Antwort senden an (optional)")]
+        public SelectListItem[] StatusList { get; set; } = new[]
+{
+            new SelectListItem { Value = StatusNotPaid, Text = "zu bezahlen" },
+            new SelectListItem { Value = StatusPaid, Text = "bereits ausgelegt" }
+        };
+
+        [Display(Name = "Das Geldbetrag ist")]
+        public string Status { get; set; }
+
+        [Display(Name = "IBAN (optional)")]
+        public string IBAN { get; set; }
+
+        [Display(Name = "Kopie der Antwort senden an (optional)")]
         [EmailAddress(ErrorMessage = "Bitte gültige E-Mail-Adresse eingeben!")]
         public string EmailAddress { get; set; }
 

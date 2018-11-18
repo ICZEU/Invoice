@@ -1,14 +1,14 @@
-﻿using System.Diagnostics;
+﻿using ICZEU.Invoice.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using ICZEU.Invoice.WebApp.Models;
-using System;
-using Microsoft.SharePoint.Client;
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
+using Microsoft.SharePoint.Client;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace ICZEU.Invoice.WebApp.Controllers
 {
@@ -89,6 +89,8 @@ namespace ICZEU.Invoice.WebApp.Controllers
                 item["Title"] = model.Reason;
                 item["Kostenstelle"] = model.CostCenter;
                 item["Absender"] = new FieldUserValue { LookupId = author.Id };
+                item["Ausgelegt"] = model.Status == InvoiceFormModel.StatusPaid;
+                item["IBAN"] = model.IBAN;
                 item["CC"] = model.EmailAddress;
                 item.Update();
                 context.ExecuteQuery();
